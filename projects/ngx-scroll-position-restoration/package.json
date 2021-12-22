@@ -1,0 +1,31 @@
+{
+  "name": "ngx-scroll-position-restoration",
+  "version": "0.1.0",
+  "peerDependencies": {
+    "@angular/common": "^13.1.0",
+    "@angular/core": "^13.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "description": "Scroll position restoration in Angular.",
+  "keywords": [
+    "scroll",
+    "position",
+    "restoration",
+    "backward",
+    "forward",
+    "navigation",
+    "angular"
+  ],
+  "homepage": "https://github.com/TheJLifeX/ngx-scroll-position-restoration#readme",
+  "bugs": {
+    "url": "https://github.com/TheJLifeX/ngx-scroll-position-restoration/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheJLifeX/ngx-scroll-position-restoration.git"
+  },
+  "license": "MIT",
+  "author": "Ulrich Tiofack"
+}

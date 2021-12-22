@@ -11,6 +11,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ngx-scroll-position-restoration": [
+        "dist/ngx-scroll-position-restoration/ngx-scroll-position-restoration",
+        "dist/ngx-scroll-position-restoration"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  font-size: 18px;
+  padding: 50px 0px 0px 0px;
+}
+
+.nav {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding: 1rem;
+  border-bottom: 2px solid gray;
+  background-color: white;
+  width: 100%;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.nav__item--active {
+  color: #1976d2;
+  font-size: 1.5rem;
+}
+
+.nav__item--secondary {
+  border-left: 1px solid #cccccc;
+  padding-left: 1rem;
+}
+
+.secondary-router-outlet-container {
+  background-color: #fafafa;
+  border-left: 1px solid #cccccc;
+  bottom: 0px;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 90%;
+}

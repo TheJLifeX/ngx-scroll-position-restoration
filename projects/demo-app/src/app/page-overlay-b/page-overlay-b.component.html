@@ -1,0 +1,10 @@
+<h2>Page Overlay B</h2>
+
+<ng-container *ngIf="!loading; else loadingTemplate">
+  <p *ngFor="let item of items">
+    {{ item }}
+  </p>
+</ng-container>
+<ng-template #loadingTemplate>
+  <p><strong>Loading....</strong></p>
+</ng-template>

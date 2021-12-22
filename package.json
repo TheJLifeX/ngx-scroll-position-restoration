@@ -1,12 +1,10 @@
 {
   "name": "ngx-scroll-position-restoration",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "dev--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --watch",
+    "dev--demo-app": "ng serve demo-app",
+    "publish--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --configuration=production && cd dist/ngx-scroll-position-restoration && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +21,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~13.1.2",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
@@ -33,6 +32,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-packagr": "^13.0.0",
     "typescript": "~4.5.2"
   }
 }

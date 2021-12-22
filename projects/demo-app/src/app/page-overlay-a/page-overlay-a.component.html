@@ -1,0 +1,11 @@
+<h2>Page Overlay A</h2>
+
+<ng-container *ngIf="!loading; else loadingTemplate">
+  <p *ngFor="let item of items">
+    {{ item }}
+  </p>
+  <a [routerLink]="[ '/', { outlets: { secondary: 'page-overlay-b' } } ]">Page Overlay B</a>
+</ng-container>
+<ng-template #loadingTemplate>
+  <p><strong>Loading....</strong></p>
+</ng-template>
