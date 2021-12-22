@@ -1,5 +1,6 @@
 
-import { Directive, OnDestroy } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { Directive, Inject, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Event as RouterNavigationEvent } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
@@ -34,10 +35,14 @@ export class CustomRouterOutletDirective implements OnDestroy {
   constructor(
     private elementRef: ElementRef<Node>,
     private router: Router,
-    private routerOutlet: RouterOutlet
+    private routerOutlet: RouterOutlet,
+    @Inject(PLATFORM_ID) private platformId: string
   ) { }
 
   ngOnInit(): void {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
 
     // In order to help with natural scroll behavior, we have to listen for the
     // creation and destruction of router View component.s		

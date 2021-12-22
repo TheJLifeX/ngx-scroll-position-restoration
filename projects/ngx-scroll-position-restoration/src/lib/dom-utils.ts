@@ -11,13 +11,6 @@ export type Target = Window | Element;
  */
 
 /**
- * I determine if the target at the given selector exists in the active DOM.
- */
-export function exists(selector: string): boolean {
-  return (!!select(selector));
-}
-
-/**
  * I get the scroll-top of the given target in the active DOM.
  */
 export function getScrollTop(target: Target): number {

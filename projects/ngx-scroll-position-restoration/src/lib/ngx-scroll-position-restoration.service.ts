@@ -1,4 +1,5 @@
-import { Inject, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { isPlatformServer } from '@angular/common';
+import { Inject, Injectable, NgZone, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { NavigationStart, Router, Event as RouterNavigationEvent, NavigationEnd } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import * as DomUtils from './dom-utils';
@@ -26,6 +27,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
   constructor(
     private router: Router,
     private zone: NgZone,
+    @Inject(PLATFORM_ID) private platformId: string,
     @Inject(NGX_SCROLL_POSITION_RESTORATION_CONFIG_INJECTION_TOKEN) private config: NgxScrollPositionRestorationConfig
   ) { }
 
@@ -33,6 +35,10 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
    * Initialize NgxScrollPositionRestorationService.
    */
   initialize(): void {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
     if (this.config.debug) {
       console.warn('NgxScrollPositionRestorationModule - This module assumes simulated encapsulation attributes for CSS selector generation.');
     }
@@ -66,9 +72,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
     // Since we're going to be implementing a custom scroll retention algorithm,
     // let's disable the one that is provided by the browser. This will keep our
     // polyfill the source of truth.
-    if (window.history && window.history.scrollRestoration) {
-      window.history.scrollRestoration = 'manual';
-    }
+    this.disableBrowserDefaultScrollRestoration();
   }
 
   ngOnDestroy(): void {
@@ -98,7 +102,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
       (): void => {
         const startedAt = Date.now();
 
-        this.applyStateToDomTimer = window.setInterval(
+        this.applyStateToDomTimer = setInterval(
           () => {
             for (const selector in pendingPageState) {
               const target = DomUtils.select(selector);
@@ -379,6 +383,18 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
       });
     }
     console.groupEnd();
+  }
+
+  /**
+   * Disable browser default scroll restoration.
+   * 
+   * Documentation:
+   * - https://developer.mozilla.org/en-US/docs/Web/API/History/scrollRestoration
+   */
+  private disableBrowserDefaultScrollRestoration(): void {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
   }
 }
 

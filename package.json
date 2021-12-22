@@ -1,6 +1,6 @@
 {
   "name": "ngx-scroll-position-restoration",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --watch",
     "dev--demo-app": "ng serve demo-app",
