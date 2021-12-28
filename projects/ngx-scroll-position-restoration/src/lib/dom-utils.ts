@@ -1,6 +1,7 @@
 
-const WINDOW_SELECTOR = '__window-selector__';
-const NG_ENCAPSULATION_PATTERN = /^_ng(host|content)\b/i;
+import { finder } from '@medv/finder';
+
+export const WINDOW_SELECTOR = '__window-selector__';
 
 export type Target = Window | Element;
 
@@ -35,7 +36,12 @@ export function getSelector(target: Target): string | null {
   if (target instanceof Window) {
     return WINDOW_SELECTOR;
   } else {
-    return getSelectorForElement(target);
+    // If the given element is not part of the active document, there's no way for us
+    // to calculate a selector for it.
+    if (!document.body.contains(target)) {
+      return null;
+    }
+    return finder(target);
   }
 }
 
@@ -82,32 +88,6 @@ export function select(selector: string): Target | null {
   }
 }
 
-/**
- * I generate a CSS selector for the given target.
- */
-function getSelectorForElement(target: Element): string | null {
-
-  // If the given element is not part of the active document, there's no way for us
-  // to calculate a selector for it.
-  if (!document.body.contains(target)) {
-    return null;
-  }
-
-  const selectors: string[] = [];
-  let current = <Node | null>target;
-
-  while (current && (current.nodeName !== 'BODY')) {
-    let selector = current.nodeName.toLowerCase();
-    for (const attribute of Array.from((current as Element).attributes)) {
-      if (attribute.name.search(NG_ENCAPSULATION_PATTERN) === 0) {
-        selector += `[${attribute.name}]`;
-      }
-    }
-    selectors.unshift(selector);
-    current = current.parentNode;
-  }
-  return selectors.join(' > ');
-}
 
 /**
  * Source:

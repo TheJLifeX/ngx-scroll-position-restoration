@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PageBRoutingModule } from './page-b-routing.module';
 import { PageBComponent } from './page-b.component';
+import { NgxScrollPositionRestorationModule } from 'ngx-scroll-position-restoration';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PageBComponent } from './page-b.component';
   ],
   imports: [
     CommonModule,
-    PageBRoutingModule
+    PageBRoutingModule,
+    NgxScrollPositionRestorationModule
   ]
 })
 export class PageBModule { }

@@ -1,9 +1,8 @@
 <div class="nav">
   <a class="nav__item" *ngFor="let link of links" [routerLink]="link" routerLinkActive="nav__item--active">{{ link
     }}</a>
-  <a class="nav__item nav__item--secondary" [routerLink]="[ '/', { outlets: { secondary: 'page-overlay-a' } } ]">Page
-    Overlay
-    A</a>
+  <a class="nav__item nav__item--secondary" [routerLink]="['/', { outlets: { secondary: 'page-overlay-a' } }]">Page
+    Overlay A</a>
 </div>
 <router-outlet></router-outlet>
 <div class="secondary-router-outlet-container" [ngStyle]="{'display': secondaryRouterOutletContainer ? null : 'none'}">

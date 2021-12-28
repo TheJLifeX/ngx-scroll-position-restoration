@@ -39,10 +39,6 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
       return;
     }
 
-    if (this.config.debug) {
-      console.warn('NgxScrollPositionRestorationModule - This module assumes simulated encapsulation attributes for CSS selector generation.');
-    }
-
     this.setupScrollBinding();
 
     // this.setupRouterBinding();
@@ -78,6 +74,16 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
   ngOnDestroy(): void {
     this.serviceDestroyed$.next();
     this.serviceDestroyed$.complete();
+  }
+
+  clearSavedWindowScrollTopInLastNavigation(): void {
+    const lastNavigationId = this.navigationIDs[this.navigationIDs.length - 1];
+    if (lastNavigationId) {
+      if (this.config.debug && this.pageStates[lastNavigationId][DomUtils.WINDOW_SELECTOR]) {
+        console.log('Navigation in a "secondary" router-outlet - Remove window scroll position from recorded scroll positions.');
+      }
+      delete (this.pageStates[lastNavigationId][DomUtils.WINDOW_SELECTOR]);
+    }
   }
 
   /**
@@ -151,7 +157,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
                 if (this.objectIsEmpty(pendingPageState)) {
                   console.log('%c Successfully reapplied all recorded scroll positions to the DOM.', 'color: #2ecc71');
                 } else {
-                  console.warn(`Could not reapply following recorded scroll positions to the DOM after a poll duration of: ${this.config.pollDuration} milliseconds.`);
+                  console.warn(`Could not reapply following recorded scroll positions to the DOM after a poll duration of: ${this.config.pollDuration} milliseconds:`);
                   this.debugPageState(pendingPageState);
                 }
               }
@@ -274,7 +280,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
         this.currentPageState[selector] = previousPageState[selector];
 
         if (this.config.debug) {
-          console.group('Pulling scroll position forward from previous state.');
+          console.group('Pulling scroll position from previous page state in current page state.');
           console.log({
             selector,
             scrollPosition: this.currentPageState[selector]
@@ -319,7 +325,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
   private setupScrollBinding(): void {
 
     /**
-     * Maybe @todo: You should try to find a way to get scrollable (scrolled) only during NavigationStart. 
+     * Maybe @todo: You should try to find a way to get scrollable (scrolled) elements only during NavigationStart. 
      * Advantages:
      * - Better performance: no need to listen to the scroll event the whole time.
      * - Some elements might be added to the `scrolledElements` are not part of the DOM any more.
@@ -375,7 +381,7 @@ export class NgxScrollPositionRestorationService implements OnDestroy {
     if (this.objectIsEmpty(pageState)) {
       return;
     }
-    console.group(message);
+    console.group(message || '');
     for (const [selector, scrollPosition] of Object.entries(pageState)) {
       console.log({
         selector,

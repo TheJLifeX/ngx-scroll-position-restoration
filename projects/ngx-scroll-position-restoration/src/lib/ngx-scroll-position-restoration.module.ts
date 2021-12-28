@@ -18,8 +18,16 @@ import { NgxScrollPositionRestorationService } from './ngx-scroll-position-resto
 })
 export class NgxScrollPositionRestorationModule {
 
+  /**
+   * Since NgxScrollPositionRestorationModule can be imported in child modules, it is needed to track if the ngxScrollPositionRestorationService has been already initialized to avoid duplicate calls of the `initialize` method. 
+   */
+  private static serviceInitialized = false;
+
   constructor(ngxScrollPositionRestorationService: NgxScrollPositionRestorationService) {
-    ngxScrollPositionRestorationService.initialize();
+    if (!NgxScrollPositionRestorationModule.serviceInitialized) {
+      ngxScrollPositionRestorationService.initialize();
+      NgxScrollPositionRestorationModule.serviceInitialized = true;
+    }
   }
 
   static forRoot(config?: NgxScrollPositionRestorationConfig): ModuleWithProviders<NgxScrollPositionRestorationModule> {
