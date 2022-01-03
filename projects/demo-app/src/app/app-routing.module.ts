@@ -27,7 +27,11 @@ const routes: Routes = [
     RouterModule.forRoot(
       routes,
       {
-        scrollPositionRestoration: 'disabled'
+        scrollPositionRestoration: 'disabled',
+        /**
+         * @todo: Check if the library supports (works well with) anchor scrolling (enabled).
+         */
+        anchorScrolling: 'enabled'
       }
     )
   ],
