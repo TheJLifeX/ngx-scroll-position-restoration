@@ -2,13 +2,15 @@
 
 [![NPM](https://img.shields.io/npm/v/ngx-scroll-position-restoration?label=NPM&color=blue)](https://www.npmjs.com/package/ngx-scroll-position-restoration "View this project on NPM.") [![NPM downloads](https://img.shields.io/npm/dt/ngx-scroll-position-restoration?label=NPM%20downloads)](https://www.npmjs.com/package/ngx-scroll-position-restoration "View this project on NPM.")
 
-Scroll position restoration in Angular.
+## Scroll position restoration in Angular.
 
 The library supports scroll position restoration by:
 - Lazy loading content
 - Named router-outlets (multiple router-outlets)
 - Child routes (nested router-outlets)
 - Backward and forward navigations
+
+## [View the demo](https://thejlifex.github.io/ngx-scroll-position-restoration/)
 
 ## Installation
 ```sh

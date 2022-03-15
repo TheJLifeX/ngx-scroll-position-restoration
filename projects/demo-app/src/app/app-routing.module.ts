@@ -19,7 +19,11 @@ const routes: Routes = [
     outlet: 'secondary',
     path: 'page-overlay-b',
     loadChildren: () => import('./page-overlay-b/page-overlay-b.module').then(m => m.PageOverlayBModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'page-a'
+  },
 ];
 
 @NgModule({
