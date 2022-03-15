@@ -1,9 +1,22 @@
-<div class="nav">
-  <a class="nav__item" *ngFor="let link of links" [routerLink]="link" routerLinkActive="nav__item--active">{{ link
-    }}</a>
-  <a class="nav__item nav__item--secondary" [routerLink]="['/', { outlets: { secondary: 'page-overlay-a' } }]">Page
-    Overlay A</a>
-</div>
+<header>
+  <h1 style="text-align: center; margin: 0 0 5px 0;"> <a
+      href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
+      rel="noopener noreferrer">NgxScrollPositionRestoration</a> </h1>
+  <p style="text-align: center; margin: 0 0 20px 0;">Scroll position restoration in Angular.</p>
+  <h4 style="margin: 0 0 10px 0;">Scroll the page, then click any link below and then click on the browser back- or
+    forward button to see
+    <a href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
+      rel="noopener noreferrer">NgxScrollPositionRestoration</a>
+    in action.
+  </h4>
+  <div class="nav">
+    <a class="nav__item" *ngFor="let link of links" [routerLink]="link" routerLinkActive="nav__item--active">{{ link
+      }}</a>
+    <a class="nav__item nav__item--secondary" [routerLink]="['/', { outlets: { secondary: 'page-overlay-a' } }]">Page
+      Overlay A</a>
+  </div>
+</header>
+
 <router-outlet></router-outlet>
 <div class="secondary-router-outlet-container" [ngStyle]="{'display': secondaryRouterOutletContainer ? null : 'none'}">
   <router-outlet name="secondary" (activate)="secondaryRouterOutletContainer = true;"

@@ -4,19 +4,18 @@
   <p *ngFor="let item of items">
     {{ item }}
   </p>
+  <div class="tabs">
+    <a routerLink="./tab-a" class="tabs__tab" routerLinkActive="tabs__tab--on">
+      Tab 1
+    </a>
+    <a routerLink="./tab-b" class="tabs__tab" routerLinkActive="tabs__tab--on">
+      Tab 2
+    </a>
+  </div>
+  <div class="tab-content">
+    <router-outlet></router-outlet>
+  </div>
 </ng-container>
 <ng-template #loadingTemplate>
   <p><strong>Loading....</strong></p>
 </ng-template>
-
-<div class="tabs">
-  <a routerLink="./tab-a" class="tabs__tab" routerLinkActive="tabs__tab--on">
-    Tab 1
-  </a>
-  <a routerLink="./tab-b" class="tabs__tab" routerLinkActive="tabs__tab--on">
-    Tab 2
-  </a>
-</div>
-<div class="tab-content">
-  <router-outlet></router-outlet>
-</div>
