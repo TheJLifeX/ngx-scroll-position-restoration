@@ -4,7 +4,8 @@
   "scripts": {
     "dev--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --watch",
     "dev--demo-app": "ng serve demo-app",
-    "publish--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --configuration=production && cd dist/ngx-scroll-position-restoration && npm publish"
+    "build": "powershell rm ./dist/* -Recurse && ng build ngx-scroll-position-restoration --configuration=production && powershell cp ./LICENSE,./README.md ./dist/ngx-scroll-position-restoration/",
+    "publish-library": "npm run build && npm publish ./dist/ngx-scroll-position-restoration/ && powershell rm ./dist/* -Recurse"
   },
   "private": true,
   "dependencies": {

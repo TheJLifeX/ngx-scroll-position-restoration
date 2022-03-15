@@ -13,7 +13,7 @@ const routes: Routes = [
         component: PageBTabAComponent
       },
       {
-        path: "tab-b",
+        path: 'tab-b',
         component: PageBTabBComponent
       }
     ]

@@ -1,13 +1,13 @@
 export interface NgxScrollPositionRestorationConfig {
   /**
-   * Define how long to poll the document after a route change in order to look for elements that need to be restored to a previous offset. Value in milliseconds.
+   * Define how long to poll the document after a route change in order to look for elements that need to be restored to a previous scroll position. Value in milliseconds.
    * 
    * @default
    * 3000 // 3 seconds
    */
   pollDuration?: number;
   /**
-   * Value in milliseconds.
+   * Define the cadence to pool the document to restore previous scroll positions (maximum until the `pollDuration`). Value in milliseconds.
    * 
    * @default
    * 50
