@@ -4,11 +4,12 @@
 
 ## Scroll position restoration in Angular.
 
-The library supports scroll position restoration by:
+The library supports scroll position restoration in the following cases:
+- Any scrollable element
 - Lazy loading content
 - Named router-outlets (multiple router-outlets)
 - Child routes (nested router-outlets)
-- Backward and forward navigations
+- Backward and forward navigation
 
 ## [View the demo](https://thejlifex.github.io/ngx-scroll-position-restoration/)
 
