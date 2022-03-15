@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.locationService.onUrlChange((url) => {
-      this.titleService.setTitle(`${url} - Demo app`);
+      this.titleService.setTitle(`${url.replace('/ngx-scroll-position-restoration', '')} - Demo app - NgxScrollPositionRestoration`);
     });
   }
 }
