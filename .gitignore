@@ -12,6 +12,7 @@
 
 # profiling files
 chrome-profiler-events*.json
+speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -31,7 +32,6 @@ chrome-profiler-events*.json
 .history/*
 
 # misc
-/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage

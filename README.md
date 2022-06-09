@@ -25,6 +25,7 @@ npm install ngx-scroll-position-restoration --save
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import NgxScrollPositionRestorationModule
@@ -34,6 +35,7 @@ import { NgxScrollPositionRestorationModule } from 'ngx-scroll-position-restorat
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     NgxScrollPositionRestorationModule.forRoot() // Import NgxScrollPositionRestorationModule
   ],
   providers: [],
@@ -152,6 +154,18 @@ interface NgxScrollPositionRestorationConfig {
   debug?: boolean;
 }
 ```
+
+## Compatibility
+| Angular version | Compatible with (tested on) |
+|-----------------|-----------------------------|
+| Angular 6       | Yes                         |
+| Angular 7       | Yes                         |
+| Angular 8       | Yes                         |
+| Angular 9       | Yes                         |
+| Angular 10      | Yes                         |
+| Angular 11      | Yes                         |
+| Angular 12      | Yes                         |
+| Angular 13      | Yes                         |
 
 ## License
 MIT

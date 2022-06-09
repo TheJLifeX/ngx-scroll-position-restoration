@@ -6,7 +6,8 @@ import { ActivatedRoute, Event as RouterNavigationEvent, NavigationStart } from 
 import { NavigationEnd } from '@angular/router';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import * as DomUtils from './dom-utils';
 import { NgxScrollPositionRestorationConfig } from './ngx-scroll-position-restoration-config';
 import { NGX_SCROLL_POSITION_RESTORATION_CONFIG_INJECTION_TOKEN } from './ngx-scroll-position-restoration-config-injection-token';
@@ -68,7 +69,8 @@ export class CustomRouterOutletDirective implements OnDestroy {
    */
   private handleActivateEvent(): void {
     const currentRouterOutletName = this.routerOutlet.activatedRoute.outlet;
-    const currentNavigation = this.router.getCurrentNavigation();
+    // A Check because there is no `router.getCurrentNavigation` function in Angular 6.
+    const currentNavigation = typeof this.router.getCurrentNavigation === 'function' ? this.router.getCurrentNavigation() : null;
     if (currentRouterOutletName !== ANGULAR_DEFAULT_ROUTER_OUTLET_NAME
       && !(currentNavigation?.extras?.skipLocationChange)) {
       this.ngxScrollPositionRestorationService.clearSavedWindowScrollTopInLastNavigation();

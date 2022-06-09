@@ -1,7 +1,8 @@
 import { isPlatformServer } from '@angular/common';
 import { Inject, Injectable, NgZone, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { NavigationStart, Router, Event as RouterNavigationEvent, NavigationEnd } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import * as DomUtils from './dom-utils';
 import { NgxScrollPositionRestorationConfig } from './ngx-scroll-position-restoration-config';
 import { NGX_SCROLL_POSITION_RESTORATION_CONFIG_INJECTION_TOKEN } from './ngx-scroll-position-restoration-config-injection-token';

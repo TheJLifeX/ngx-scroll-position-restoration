@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class PageAComponent implements OnInit {
     this.loading = true;
     this.demoApiService.getData('Page A').pipe(
       takeUntil(this.componentDestroyed$)
-    ).subscribe(items => {
+    ).subscribe((items) => {
       this.items = items;
       this.loading = false;
     });

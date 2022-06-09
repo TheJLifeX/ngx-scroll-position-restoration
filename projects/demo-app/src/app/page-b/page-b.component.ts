@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
