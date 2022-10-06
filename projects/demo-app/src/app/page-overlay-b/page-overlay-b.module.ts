@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PageOverlayBRoutingModule } from './page-overlay-b-routing.module';
 import { PageOverlayBComponent } from './page-overlay-b.component';
-
+import { PageContentModule } from '../page-content/page-content.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { PageOverlayBComponent } from './page-overlay-b.component';
   ],
   imports: [
     CommonModule,
-    PageOverlayBRoutingModule
+    PageOverlayBRoutingModule,
+    PageContentModule
   ]
 })
 export class PageOverlayBModule { }

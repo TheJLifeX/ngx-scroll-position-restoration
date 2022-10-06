@@ -1,20 +1,3 @@
-<h2>Page Overlay A</h2>
-
-<ng-container *ngIf="!loading; else loadingTemplate">
-  <h4>Scroll until the bottom on the page, then navigate to "Page Overlay B" and then click on the browser backward
-    button to
-    see
-    <a href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
-      rel="noopener noreferrer">NgxScrollPositionRestoration</a>
-    in action.
-  </h4>
-  <p *ngFor="let item of items">
-    {{ item }}
-  </p>
-  <p>
-    <a [routerLink]="[ '/', { outlets: { secondary: 'page-overlay-b' } } ]">Page Overlay B</a>
-  </p>
-</ng-container>
-<ng-template #loadingTemplate>
-  <p><strong>Loading....</strong></p>
-</ng-template>
+<app-page-content [pageName]="pageName" [loading]="loading"
+  [actionRouterLink]="[ '/', { outlets: { secondary: 'page-overlay-b' } } ]"
+  [actionName]="'Navigate to Page Overlay B'"></app-page-content>

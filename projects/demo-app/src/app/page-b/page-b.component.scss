@@ -1,29 +1,8 @@
 :host {
   display: block;
-  text-align: center;
-}
-
-.tabs {
-  display: flex;
-  border-bottom: 5px solid #cccccc;
-  margin: 30px 100px;
-
-  &__tab {
-    background-color: #fafafa;
-    flex: 1 0 auto;
-    padding: 17px 0px 14px 0px;
-    text-align: center;
-
-    &--on {
-      background-color: #cccccc;
-      font-weight: bold;
-    }
-  }
 }
 
 .tab-content {
-  margin: 0px 80px;
-  padding: 20px 20px 20px 20px;
   height: 30vh;
   overflow: auto;
 }

@@ -1,23 +1,47 @@
-<header>
-  <h1 style="text-align: center; margin: 0 0 5px 0;"> <a
-      href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
-      rel="noopener noreferrer">NgxScrollPositionRestoration</a> </h1>
-  <p style="text-align: center; margin: 0 0 20px 0;">Scroll position restoration in Angular.</p>
-  <h4 style="margin: 0 0 10px 0;">Scroll the page, then click any link below and then click on the browser back- or
-    forward button to see
-    <a href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
-      rel="noopener noreferrer">NgxScrollPositionRestoration</a>
-    in action.
-  </h4>
-  <div class="nav">
-    <a class="nav__item" *ngFor="let link of links" [routerLink]="link" routerLinkActive="nav__item--active">{{ link
-      }}</a>
-    <a class="nav__item nav__item--secondary" [routerLink]="['/', { outlets: { secondary: 'page-overlay-a' } }]">Page
-      Overlay A</a>
-  </div>
-</header>
+<nav class="app-navbar navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-between mb-5">
+  <div class="container">
+    <span class="navbar-brand">
+      NgxScrollPositionRestoration
+    </span>
+    <button class="navbar-toggler" style="outline: none;" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<router-outlet></router-outlet>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-lg-3 mr-xl-4" *ngFor="let link of links">
+          <a class="nav-link app-tab-link" [routerLink]="link.url" [routerLinkActive]="'app-tab-link--is-active'">
+            {{ link.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <header class="mb-4">
+    <h1>Angular scroll position restoration library</h1>
+    <p>Scroll the page, then click any nav link above and then click on the browser back- or forward button to see
+      NgxScrollPositionRestoration in action.</p>
+    <p>
+      GitHub: <a href="https://github.com/TheJLifeX/ngx-scroll-position-restoration" target="_blank"
+        rel="noopener noreferrer">github.com/TheJLifeX/ngx-scroll-position-restoration</a>
+      <br>
+      NPM: <a href="https://www.npmjs.com/package/ngx-scroll-position-restoration" target="_blank"
+        rel="noopener noreferrer">npmjs.com/ngx-scroll-position-restoration</a>
+    </p>
+    <h2>Installation</h2>
+    <div><code>npm install ngx-scroll-position-restoration --save</code></div>
+  </header>
+
+  <hr>
+
+  <router-outlet></router-outlet>
+</main>
+
 <div class="secondary-router-outlet-container" [ngStyle]="{'display': secondaryRouterOutletContainer ? null : 'none'}">
   <router-outlet name="secondary" (activate)="secondaryRouterOutletContainer = true;"
     (deactivate)="secondaryRouterOutletContainer = false;"></router-outlet>

@@ -1,23 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
+import { delay, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DemoApiService {
+export class DemoApiService implements OnDestroy {
+
+  private serviceDestroyed$ = new Subject();
 
   constructor() { }
 
-  getData(pageName: string): Observable<string[]> {
-    return new Observable((subcriber) => {
-      const simulatedRequestTime = Math.floor(300 + (Math.random() * 1000));
-      setTimeout(() => {
-        const items = [];
-        for (var i = 0; i < 100; i++) {
-          items.push(`Item ${i} for: ${pageName}.`);
-        }
-        subcriber.next(items);
-      }, simulatedRequestTime);
-    });
+  simulateLoadData(): Observable<string[]> {
+    const simulatedRequestTime = Math.floor(150 + (Math.random() * 300));
+    return of([]).pipe(
+      takeUntil(this.serviceDestroyed$),
+      delay(simulatedRequestTime)
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.serviceDestroyed$.next();
+    this.serviceDestroyed$.complete();
   }
 }

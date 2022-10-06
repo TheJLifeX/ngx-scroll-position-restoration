@@ -11,10 +11,23 @@ export class AppComponent implements OnInit {
 
   secondaryRouterOutletContainer: boolean = false;
 
-  links: string[] = [
-    '/page-a',
-    '/page-b',
-    '/page-c'
+  links = [
+    {
+      name: 'Page A',
+      url: '/page-a'
+    },
+    {
+      name: 'Page B',
+      url: '/page-b'
+    },
+    {
+      name: 'Page C',
+      url: '/page-c'
+    },
+    {
+      name: 'Page Overlay A',
+      url: ['/', { outlets: { secondary: 'page-overlay-a' } }]
+    }
   ];
 
   constructor(

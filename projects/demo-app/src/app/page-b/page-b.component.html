@@ -1,21 +1,17 @@
-<h2>Page B</h2>
-
-<ng-container *ngIf="!loading; else loadingTemplate">
-  <p *ngFor="let item of items">
-    {{ item }}
-  </p>
-  <div class="tabs">
-    <a routerLink="./tab-a" class="tabs__tab" routerLinkActive="tabs__tab--on">
-      Tab 1
-    </a>
-    <a routerLink="./tab-b" class="tabs__tab" routerLinkActive="tabs__tab--on">
-      Tab 2
-    </a>
+<app-page-content [pageName]="pageName" [loading]="loading">
+  <div class="card mb-4">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs justify-content-around">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="./tab-a" routerLinkActive="active">Tab A</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="./tab-b" routerLinkActive="active">Tab B</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body tab-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="tab-content">
-    <router-outlet></router-outlet>
-  </div>
-</ng-container>
-<ng-template #loadingTemplate>
-  <p><strong>Loading....</strong></p>
-</ng-template>
+</app-page-content>

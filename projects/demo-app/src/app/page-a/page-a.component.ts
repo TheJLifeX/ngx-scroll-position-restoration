@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
-  selector: 'app-page-a',
   templateUrl: './page-a.component.html',
   styleUrls: ['./page-a.component.scss']
 })
 export class PageAComponent implements OnInit {
 
-  loading!: boolean;
-  items!: string[];
+  loading: boolean = false;
+  pageName: string = 'Page A';
 
   private componentDestroyed$ = new Subject<void>();
 
@@ -19,12 +18,9 @@ export class PageAComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.demoApiService.getData('Page A').pipe(
+    this.demoApiService.simulateLoadData().pipe(
       takeUntil(this.componentDestroyed$)
-    ).subscribe((items) => {
-      this.items = items;
-      this.loading = false;
-    });
+    ).subscribe(() => this.loading = false);
   }
 
   ngOnDestroy(): void {

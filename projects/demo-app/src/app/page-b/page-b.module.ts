@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PageBRoutingModule } from './page-b-routing.module';
 import { PageBComponent } from './page-b.component';
 import { NgxScrollPositionRestorationModule } from 'ngx-scroll-position-restoration';
 import { PageBTabAComponent } from './page-b-tab-a/page-b-tab-a.component';
 import { PageBTabBComponent } from './page-b-tab-b/page-b-tab-b.component';
-
+import { PageContentModule } from '../page-content/page-content.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,8 @@ import { PageBTabBComponent } from './page-b-tab-b/page-b-tab-b.component';
   imports: [
     CommonModule,
     PageBRoutingModule,
-    NgxScrollPositionRestorationModule
+    NgxScrollPositionRestorationModule,
+    PageContentModule
   ]
 })
 export class PageBModule { }

@@ -3,7 +3,7 @@
   "version": "0.1.5",
   "scripts": {
     "dev--ngx-scroll-position-restoration": "ng build ngx-scroll-position-restoration --watch",
-    "dev--demo-app": "ng serve demo-app",
+    "dev--demo-app": "ng serve demo-app --open",
     "build-demo-app": "powershell rm ./dist/* -Recurse && ng build ngx-scroll-position-restoration --configuration=production && ng build demo-app --configuration=production --baseHref=/ngx-scroll-position-restoration/",
     "deploy-demo-app-on-github-pages": "npm run build-demo-app && powershell cp ./dist/demo-app/index.html ./dist/demo-app/404.html && gh-pages -d ./dist/demo-app/ && powershell rm ./dist/* -Recurse",
     "build": "powershell rm ./dist/* -Recurse && ng build ngx-scroll-position-restoration --configuration=production && powershell cp ./LICENSE,./README.md ./dist/ngx-scroll-position-restoration/",

@@ -4,14 +4,13 @@ import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
-  selector: 'app-page-overlay-b',
   templateUrl: './page-overlay-b.component.html',
   styleUrls: ['./page-overlay-b.component.scss']
 })
 export class PageOverlayBComponent implements OnInit, OnDestroy {
 
-  loading!: boolean;
-  items!: string[];
+  loading: boolean = false;
+  pageName: string = 'Page Overlay B';
 
   private componentDestroyed$ = new Subject<void>();
 
@@ -19,17 +18,13 @@ export class PageOverlayBComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loading = true;
-    this.demoApiService.getData('Page Overlay B').pipe(
+    this.demoApiService.simulateLoadData().pipe(
       takeUntil(this.componentDestroyed$)
-    ).subscribe(items => {
-      this.items = items;
-      this.loading = false;
-    });
+    ).subscribe(() => this.loading = false);
   }
 
   ngOnDestroy(): void {
     this.componentDestroyed$.next();
     this.componentDestroyed$.complete();
   }
-
 }

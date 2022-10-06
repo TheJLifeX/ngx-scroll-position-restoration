@@ -4,14 +4,13 @@ import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
-  selector: 'app-page-b',
   templateUrl: './page-b.component.html',
   styleUrls: ['./page-b.component.scss']
 })
 export class PageBComponent implements OnInit {
 
-  loading!: boolean;
-  items!: string[];
+  loading: boolean = false;
+  pageName: string = 'Page B';
 
   private componentDestroyed$ = new Subject<void>();
 
@@ -19,12 +18,9 @@ export class PageBComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.demoApiService.getData('Page B').pipe(
+    this.demoApiService.simulateLoadData().pipe(
       takeUntil(this.componentDestroyed$)
-    ).subscribe(items => {
-      this.items = items;
-      this.loading = false;
-    });
+    ).subscribe(() => this.loading = false);
   }
 
   ngOnDestroy(): void {

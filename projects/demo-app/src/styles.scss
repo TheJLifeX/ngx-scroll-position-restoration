@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/colors.scss';
+@import './styles/settings.scss';
+@import './styles/utility-classes.scss';
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+html,
+body {
+  color: var(--app-text-color);
+  background-color: var(--app-background-color);
+}
+
+main {
+  margin-top: 6rem;
+}
+
+// Overwrite bootstrap styles
+a {
+  color: var(--app-primary-color);
+}
+
+// End - Overwrite bootstrap styles

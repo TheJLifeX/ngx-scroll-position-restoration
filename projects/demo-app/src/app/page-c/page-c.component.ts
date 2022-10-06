@@ -4,14 +4,13 @@ import { takeUntil } from 'rxjs/operators';
 import { DemoApiService } from '../demo-api.service';
 
 @Component({
-  selector: 'app-page-c',
   templateUrl: './page-c.component.html',
   styleUrls: ['./page-c.component.scss']
 })
 export class PageCComponent implements OnInit, OnDestroy {
 
-  loading!: boolean;
-  items!: string[];
+  loading: boolean = false;
+  pageName: string = 'Page C';
 
   private componentDestroyed$ = new Subject<void>();
 
@@ -19,12 +18,9 @@ export class PageCComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loading = true;
-    this.demoApiService.getData('Page C').pipe(
+    this.demoApiService.simulateLoadData().pipe(
       takeUntil(this.componentDestroyed$)
-    ).subscribe(items => {
-      this.items = items;
-      this.loading = false;
-    });
+    ).subscribe(() => this.loading = false);
   }
 
   ngOnDestroy(): void {

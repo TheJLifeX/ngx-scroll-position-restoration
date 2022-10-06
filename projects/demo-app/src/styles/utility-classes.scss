@@ -1,0 +1,44 @@
+// Tab link
+.app-tab-link {
+  position: relative;
+
+  &:hover {
+    &::before {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Small bar element at the bottom (like an underline).
+  &::before {
+    content: "";
+    position: absolute;
+    width: auto;
+    height: 4px;
+    border-radius: 50px;
+    bottom: -3px;
+    left: 5px;
+    right: 5px;
+    background-color: var(--app-primary-color);
+
+    // Hidden per default
+    opacity: 0;
+    transform: translateY(10px);
+    //
+
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+.app-tab-link--is-active {
+  color: var(--app-primary-color) !important;
+
+  &::before {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// End - Tab link
