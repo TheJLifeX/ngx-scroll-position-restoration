@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'page-overlay-b',
     loadChildren: () => import('./page-overlay-b/page-overlay-b.module').then(m => m.PageOverlayBModule)
   },
+  { path: 'details-page/:id', loadChildren: () => import('./details-page/details-page.module').then(m => m.DetailsPageModule) },
   {
     path: '**',
     redirectTo: 'page-a'

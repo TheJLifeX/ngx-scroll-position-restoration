@@ -12,7 +12,9 @@
           <p class="card-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, voluptatibus porro aliquam soluta.
           </p>
-          <a *ngIf="actionRouterLink && actionName" [routerLink]="actionRouterLink" class="card-link">{{ actionName
+          <a *ngIf="actionRouterLink && actionName"
+            [routerLink]="withCardId ? actionRouterLink.concat([index]) : actionRouterLink" class="card-link">{{
+            actionName
             }}</a>
         </div>
       </div>

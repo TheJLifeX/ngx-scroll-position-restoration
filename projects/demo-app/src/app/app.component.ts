@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
       url: '/page-a'
     },
     {
-      name: 'Page B',
+      name: 'Page B (with Tabs)',
       url: '/page-b'
     },
     {

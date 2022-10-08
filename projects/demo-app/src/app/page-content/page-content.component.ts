@@ -10,13 +10,16 @@ export class PageContentComponent implements OnInit {
 
   @Input() pageName!: string;
   @Input() loading!: boolean;
-  @Input() actionRouterLink?: any;
+  @Input() actionRouterLink?: any[];
   @Input() actionName?: string;
+  /**
+   * actionRouterLink with card id.
+   */
+  @Input() withCardId: boolean = false;
 
   items = new Array(100);
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }
